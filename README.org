@@ -1,0 +1,8 @@
+#+TITLE: voices-in-my-head
+
+Tooling for curating contextual voices. Context is anything you are working on
+or thinking about. Voices are the telegraphic inner speech that drive your works
+or thoughts.
+
+=vimh= is an experimentation in expressing inner speech for people inclining
+towards the verbal modality of thinking.
