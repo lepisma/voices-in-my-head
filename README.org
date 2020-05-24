@@ -9,9 +9,8 @@ towards the verbal modality of thinking.
 
 -----
 
-The way I personally create something ties up very little of what I do while
-creating that piece. This covers both prose and programs. What I want to also
-keep is a sort of memory of the process. One naive way is to just keep screen
-recording the whole process. But that is /naive/ because of many reasons. With
-vimh, I want to rethink what happens on a keypress and save more than characters
-while working.
+The process of creating something is usually lost in the end product. This
+covers both prose and programs. What I want is to keep a sort of memory of this
+process. A naive way is to just keep screen recording the whole time. But that
+is /naive/ because of many reasons. With vimh, I want to rethink what happens on a
+keypress and save more than characters while working.
