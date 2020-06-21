@@ -4,7 +4,7 @@
 
 ;; Author: Abhinav Tushar <abhinav@lepisma.xyz>
 ;; Version: 0.0.3
-;; Package-Requires: ((emacs "26") (esi "0.0.5") (magit "2.90.1"))
+;; Package-Requires: ((emacs "26") (esi "0.0.5"))
 ;; URL: https://github.com/lepisma/voices-in-my-head
 
 ;;; Commentary:
@@ -31,33 +31,40 @@
 
 (require 'esi-core)
 
-(defcustom vimh-voice-max-duration 30
-  "Maximum length of audio file in seconds"
+(defcustom vimh-flight-max-duration 30
+  "Maximum length of audio file in seconds for flight mode
+recordings."
   :type 'number)
 
-(defcustom vimh-voice-sample-rate 44100
-  "Sample rate for recordings"
+(defcustom vimh-sample-rate 44100
+  "Sample rate for recordings."
   :type 'integer)
 
-(defvar vimh-voice-instream nil
+(defvar vimh-flight-stream nil
   "Flight mode style audio stream.")
 
-(defun vimh--stop-stream ()
-  (when vimh-voice-instream
-    (esi-core--stop-background-recording vimh-voice-instream)
-    (setq vimh-voice-instream nil)))
+(defun vimh--stop-flight-stream ()
+  (when vimh-flight-stream
+    (esi-core--stop-background-recording vimh-flight-stream)
+    (setq vimh-flight-stream nil)))
 
-(defun vimh--start-stream ()
-  (vimh--stop-stream)
-  (setq vimh-voice-instream (esi-core--start-background-recording vimh-voice-sample-rate vimh-voice-max-duration)))
+(defun vimh--start-flight-stream ()
+  (vimh--stop-flight-stream)
+  (setq vimh-flight-stream (esi-core--start-background-recording vimh-sample-rate vimh-flight-max-duration)))
+
+(defun vimh-read-flight-stream ()
+  "Read audio blob from the flight stream."
+  (if (null vimh-flight-stream)
+      (error "Flight stream not active.")
+    (esi-core--read-background-recording-buffer vimh-flight-stream)))
 
 ;;;###autoload
 (define-minor-mode vimh-mode
   "Voices In My Head minor mode."
   :global t
   (if vimh-mode
-      (vimh--start-stream)
-    (vimh--stop-stream)))
+      (vimh--start-flight-stream)
+    (vimh--stop-flight-stream)))
 
 (provide 'vimh)
 
