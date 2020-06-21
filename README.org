@@ -14,3 +14,17 @@ covers both prose and programs. What I want is to keep a sort of memory of this
 process. A naive way is to just keep screen recording the whole time. But that
 is /naive/ because of many reasons. With vimh, I want to rethink what happens on a
 keypress and save more than characters while working.
+
+** Structure
+There are two major moving pieces for each vimh enabled project. One is a store
+which keeps recordings with their metadata (like transcriptions), if any. Second
+is contextual references to those files.
+
+To start with I have a simple =vimh-git= module which stores last n seconds worth
+of audio every time you make a commit via magit.
+
+The store is just a list of audios in flac along with an sqlite file keeping
+track of extra information about the audios. Note that at present, there are no
+backlinks and no intermediate indexer. So moving a =vimh= store out of the context
+will essentially lead to losing the information. Though flacs are named with
+hashes so it's actually not that bad.
