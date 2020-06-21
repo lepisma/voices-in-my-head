@@ -53,7 +53,7 @@ Return name (hash) of the stored item for reference."
          (target-file-path (concat (vimh-store--voices-dir store-directory) hash "." ext)))
     (if (file-exists-p target-file-path)
         (message "File already exists")
-      (f-write-bytes audio-blob target-file-path))
+      (f-write-text audio-blob 'utf-8 target-file-path))
     hash))
 
 (defun vimh-store-load (store-directory name ext)
