@@ -66,7 +66,7 @@
 (defun vimh-git-insert ()
   (interactive)
   (let ((hash (vimh-git-hook-fn)))
-    (insert "#vimh(" hash ")")))
+    (insert ":vimh(\"" hash "\")")))
 
 ;; TODO: This will go as a minor mode later on
 ;;;###autoload
