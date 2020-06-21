@@ -62,19 +62,23 @@
         (audio-blob (esi-core--read-background-recording-buffer vimh-git-voice-instream)))
     (vimh-store-save store-path audio-blob "pcm")))
 
+;;;###autoload
+(defun vimh-git-insert ()
+  (interactive)
+  (let ((hash (vimh-git-hook-fn)))
+    (insert "#vimh(" hash ")")))
+
 ;; TODO: This will go as a minor mode later on
 ;;;###autoload
 (defun vimh-git-enable ()
   (interactive)
   (vimh-git-setup)
-  (vimh-git-start-instream)
-  (add-hook 'git-commit-post-finish-hook #'vimh-git-hook-fn))
+  (vimh-git-start-instream))
 
 ;;;###autoload
 (defun vimh-git-disable ()
   (interactive)
-  (vimh-git-stop-instream)
-  (remove-hook 'git-commit-post-finish-hook #'vimh-git-hook-fn))
+  (vimh-git-stop-instream))
 
 (provide 'vimh-git)
 
