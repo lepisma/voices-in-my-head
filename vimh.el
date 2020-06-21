@@ -29,6 +29,36 @@
 
 ;;; Code:
 
+(require 'esi-core)
+
+(defcustom vimh-voice-max-duration 30
+  "Maximum length of audio file in seconds"
+  :type 'number)
+
+(defcustom vimh-voice-sample-rate 44100
+  "Sample rate for recordings"
+  :type 'integer)
+
+(defvar vimh-voice-instream nil
+  "Flight mode style audio stream.")
+
+(defun vimh--stop-stream ()
+  (when vimh-voice-instream
+    (esi-core--stop-background-recording vimh-voice-instream)
+    (setq vimh-voice-instream nil)))
+
+(defun vimh--start-stream ()
+  (vimh--stop-stream)
+  (setq vimh-voice-instream (esi-core--start-background-recording vimh-voice-sample-rate vimh-voice-max-duration)))
+
+;;;###autoload
+(define-minor-mode vimh-mode
+  "Voices In My Head minor mode."
+  :global t
+  (if vimh-mode
+      (vimh--start-stream)
+    (vimh--stop-stream)))
+
 (provide 'vimh)
 
 ;;; vimh.el ends here
