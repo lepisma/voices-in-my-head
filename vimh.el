@@ -4,7 +4,7 @@
 
 ;; Author: Abhinav Tushar <abhinav@lepisma.xyz>
 ;; Version: 0.0.1
-;; Package-Requires: ((emacs "26") (esi "0.0.5"))
+;; Package-Requires: ((emacs "26") (esi "0.0.5") (magit "2.90.1"))
 ;; URL: https://github.com/lepisma/voices-in-my-head
 
 ;;; Commentary:
