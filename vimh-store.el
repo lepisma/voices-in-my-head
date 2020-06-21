@@ -41,8 +41,9 @@
   (concat (file-name-as-directory store-directory) "voices/"))
 
 (defun vimh-store-setup (directory)
-  "Create a new store in given DIRECTORY."
-  (make-directory (vimh-store--voices-dir directory)))
+  "Create a new store in given DIRECTORY and return DIRECTORY."
+  (make-directory (vimh-store--voices-dir directory) t)
+  directory)
 
 (defun vimh-store-save (store-directory audio-blob ext)
   "Save given AUDIO-BLOB in STORE-DIRECTORY with EXT extension.
