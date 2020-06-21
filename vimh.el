@@ -4,7 +4,7 @@
 
 ;; Author: Abhinav Tushar <abhinav@lepisma.xyz>
 ;; Version: 0.0.1
-;; Package-Requires: ((emacs "26"))
+;; Package-Requires: ((emacs "26") (esi "0.0.5"))
 ;; URL: https://github.com/lepisma/voices-in-my-head
 
 ;;; Commentary:
@@ -28,8 +28,6 @@
 ;; along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Code:
-
-(require 'esi-record)
 
 (provide 'vimh)
 
