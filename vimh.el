@@ -3,7 +3,7 @@
 ;; Copyright (c) 2020 Abhinav Tushar
 
 ;; Author: Abhinav Tushar <abhinav@lepisma.xyz>
-;; Version: 0.0.3
+;; Version: 0.0.4
 ;; Package-Requires: ((emacs "26") (esi "0.0.5"))
 ;; URL: https://github.com/lepisma/voices-in-my-head
 
